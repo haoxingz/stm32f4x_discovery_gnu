@@ -20,6 +20,7 @@ LDFLAGS = -Wl,--gc-sections $(PROCESSOR) -T$(LINKER_SCRIPT)
 ###### Frequently used paths ######
 PATH_CM4 = ../lib/CMSIS/CM4/
 PATH_PERIPH = ../lib/STM32F4xx_StdPeriph_Driver
+PATH_DRIVER = ../driver/
 PATH_OBJ = ./obj
 PATH_BIN = ./bin
 
@@ -27,17 +28,19 @@ PATH_BIN = ./bin
 ###### VPATH is the default seach path for source files ######
 SRC_CM4 = $(PATH_CM4)/src
 SRC_PERIPH = $(PATH_PERIPH)/src
+SRC_DRIVER = $(PATH_DRIVER)/src
 SRC_APP = .
 
-VPATH = $(SRC_APP) $(SRC_CM4) $(SRC_PERIPH) 
+VPATH = $(SRC_APP) $(SRC_CM4) $(SRC_PERIPH) $(SRC_DRIVER) 
 
 
 
 ###### Search paths for header files ######
 HEADER_ST = -I$(PATH_CM4)/inc -I$(PATH_PERIPH)/inc
+HEADER_DR = -I$(PATH_DRIVER)/inc
 HEADER_APP = -I.
 
-INCLUDE = $(HEADER_ST) $(HEADER_APP)
+INCLUDE = $(HEADER_ST) $(HEADER_DR) $(HEADER_APP)
 
 
 ###### All the scripts ######
@@ -47,7 +50,7 @@ LINKER_SCRIPT = ../script/stm32_flash.ld
 
 ###### List of object files ######
 OBJ_ST = stm32f4xx_gpio.o stm32f4xx_rcc.o system_stm32f4xx.o startup_stm32f4xx.o
-OBJ_APP = main.o
+OBJ_APP = led.o main.o
 
 OBJ += $(patsubst %, $(PATH_OBJ)/%, $(OBJ_ST))
 OBJ += $(patsubst %, $(PATH_OBJ)/%, $(OBJ_APP))

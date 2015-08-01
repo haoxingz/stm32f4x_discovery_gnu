@@ -1,4 +1,4 @@
-# TODO: Add the file head here
+/* TODO: Add the file head here */
 
 /* Define guard to prevent recursive inclusion */
 #ifndef __LED_H

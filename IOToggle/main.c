@@ -3,9 +3,8 @@
 */
 
 /* Include all the library files */
-#include "stm32f4xx.h"
-#include "stm32f4xx_conf.h"
-#include <stdint.h>
+//#include "stm32f4xx.h"
+#include "led.h"
 
 
 void delay(uint32_t nCount) {
@@ -14,46 +13,37 @@ void delay(uint32_t nCount) {
 
 
 int main(void) {
-    /* Define the GPIO initialization type*/
-    GPIO_InitTypeDef GPIO_InitStructure;
-    
-    /* Enbale the clock for GPIO_D*/
-    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
-    
-    /* Configure PD12-PD15 in output pushpull mode */
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12 | GPIO_Pin_13 
-                                    | GPIO_Pin_14 | GPIO_Pin_15;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
-    GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
-    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
-    GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
-    GPIO_Init(GPIOD, &GPIO_InitStructure);
+
+    ledInit(LED4);
+    ledInit(LED3);
+    ledInit(LED5);
+    ledInit(LED6);
 
     while(1) {
         /* Ignite the LEDs in sequence */
-        GPIO_SetBits(GPIOD, GPIO_Pin_12);
+        ledOn(LED4);
         delay(0x3FFFFF);
 
-        GPIO_SetBits(GPIOD, GPIO_Pin_13);
+        ledOn(LED3);
         delay(0x3FFFFF);
 
-        GPIO_SetBits(GPIOD, GPIO_Pin_14);
+        ledOn(LED5);
         delay(0x3FFFFF);
 
-        GPIO_SetBits(GPIOD, GPIO_Pin_15);
+        ledOn(LED6);
         delay(0x3FFFFF);
         
         /* Turn off the LEDs in sequence */
-        GPIO_ResetBits(GPIOD, GPIO_Pin_12);
+        ledOff(LED4);
         delay(0x3FFFFF);
 
-        GPIO_ResetBits(GPIOD, GPIO_Pin_13);
+        ledOff(LED3);
         delay(0x3FFFFF);
 
-        GPIO_ResetBits(GPIOD, GPIO_Pin_14);
+        ledOff(LED5);
         delay(0x3FFFFF);
 
-        GPIO_ResetBits(GPIOD, GPIO_Pin_15);
+        ledOff(LED6);
         delay(0x3FFFFF);
     }
 

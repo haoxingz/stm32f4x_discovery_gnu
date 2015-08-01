@@ -1,4 +1,4 @@
-# TODO: Find a proper file head here
+// TODO: Find a proper file head here
 
 #include "stm32f4xx.h"
 #include "led.h"
@@ -17,9 +17,9 @@ void ledInit(Led_TypeDef led) {
     
     /* Configure LED pin */
     GPIO_InitStructure.GPIO_Pin = LED_PIN[led]; 
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
     GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
-    GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_Up;
+    GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 
     GPIO_Init(LED_PORT[led], &GPIO_InitStructure);
