@@ -3,7 +3,7 @@
 */
 
 /* Include all the library files */
-#include "led.h"
+#include "discovery_led.h"
 
 
 void delay(uint32_t nCount) {
@@ -13,10 +13,7 @@ void delay(uint32_t nCount) {
 
 int main(void) {
 
-    ledInit(LED4);
-    ledInit(LED3);
-    ledInit(LED5);
-    ledInit(LED6);
+    ledInitAll();
 
     while(1) {
         /* Ignite the LEDs in sequence */

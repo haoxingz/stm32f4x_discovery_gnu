@@ -50,7 +50,7 @@ LINKER_SCRIPT = ../script/stm32_flash.ld
 
 ###### List of object files ######
 OBJ_ST = stm32f4xx_gpio.o stm32f4xx_rcc.o system_stm32f4xx.o startup_stm32f4xx.o
-OBJ_APP = led.o main.o
+OBJ_APP = discovery_led.o main.o
 
 OBJ += $(patsubst %, $(PATH_OBJ)/%, $(OBJ_ST))
 OBJ += $(patsubst %, $(PATH_OBJ)/%, $(OBJ_APP))
