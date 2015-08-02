@@ -3,7 +3,6 @@
 */
 
 /* Include all the library files */
-//#include "stm32f4xx.h"
 #include "led.h"
 
 
