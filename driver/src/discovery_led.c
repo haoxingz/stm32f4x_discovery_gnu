@@ -1,7 +1,7 @@
 // TODO: Find a proper file head here
 
 #include "stm32f4xx.h"
-#include "led.h"
+#include "discovery_led.h"
 
 GPIO_TypeDef* LED_PORT[LED_N] = {LED4_PORT, LED3_PORT, LED5_PORT, LED6_PORT};
 const uint16_t LED_PIN[LED_N] = {LED4_PIN, LED3_PIN, LED5_PIN, LED6_PIN};
@@ -24,6 +24,28 @@ void ledInit(Led_TypeDef led) {
 
     GPIO_Init(LED_PORT[led], &GPIO_InitStructure);
 }
+
+/* Initialize all LEDs at the same time 
+ * This implementation only works because all 4 LEDs are in the same port
+ * */
+void ledInitAll(void) {
+
+    GPIO_InitTypeDef GPIO_InitStructure;
+    
+    /* Enbale the clock */
+    RCC_AHB1PeriphClockCmd(LED4_CLK, ENABLE);
+    
+    /* Configure LED pin */
+    GPIO_InitStructure.GPIO_Pin = LED4_PIN | LED3_PIN | LED5_PIN | LED6_PIN; 
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+    GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+    GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+
+    GPIO_Init(LED4_PORT, &GPIO_InitStructure);
+}
+
+
 
 /* Turn on a LED */
 void ledOn(Led_TypeDef led) {

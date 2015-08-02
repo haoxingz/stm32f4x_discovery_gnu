@@ -1,8 +1,8 @@
 /* TODO: Add the file head here */
 
 /* Define guard to prevent recursive inclusion */
-#ifndef __LED_H
-#define __LED_H
+#ifndef DISCOVERY_LED_H
+#define DISCOVERY_LED_H
 
 /* Includes */
 #include "stm32f4xx.h"
@@ -37,6 +37,7 @@ typedef enum {
 
 /* Low level LED operations */
 void ledInit(Led_TypeDef led);
+void ledInitAll(void);
 void ledOn(Led_TypeDef led);
 void ledOff(Led_TypeDef led);
 void ledToggle(Led_TypeDef led);
