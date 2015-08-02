@@ -18,16 +18,16 @@ int main(void) {
     while(1) {
         /* Ignite the LEDs in sequence */
         ledOn(LED4);
-        delay(0x3FFFFF);
+        delay(0x0FFFFF);
 
         ledOn(LED3);
-        delay(0x3FFFFF);
+        delay(0x0FFFFF);
 
         ledOn(LED5);
-        delay(0x3FFFFF);
+        delay(0x0FFFFF);
 
         ledOn(LED6);
-        delay(0x3FFFFF);
+        delay(0x0FFFFF);
         
         /* Turn off the LEDs in sequence */
         ledOff(LED4);
